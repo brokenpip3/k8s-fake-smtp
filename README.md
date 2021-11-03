@@ -1,8 +1,8 @@
 # Simple k8s fake smtp server
 
-You have an application which needs a smtp server but yuo don't really care about
+Do you have an application which needs a smtp server but you don't really care about
 sending email through it?
-Or are you developing a new application on kubernetes and you need a smtp
+Are you developing a new application in kubernetes and do you need a smtp
 microservice to debug sending mails?
 
 This is a simple python DebuggingServer from smtplib that allows you to provide
@@ -10,10 +10,9 @@ a smtp server which always accepts mails and print them to stdout or not (see Pr
 
 ## Install
 
-`kubectl apply -f fake-smtp.yaml`
+You can find an example [here](fake-stmp.yaml)
 
 ## Privacy
 
-If, for any reason (privacy, sensible information etc), you don't want to
-have the mail in pod logs (stdout), just set the env "NOLOG" to value "1" (there
-is arleady an example on yaml file, just comment out in case you need)
+By default this container logs all the incoming emails in stdout for debugging
+purpose, if you prefer to avoid this behavior just set the env var `NOLOG` to value `1`.

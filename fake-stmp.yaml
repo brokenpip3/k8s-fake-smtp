@@ -2,7 +2,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: fake-smtp
   name: fake-smtp
@@ -11,15 +10,13 @@ spec:
   selector:
     matchLabels:
       app: fake-smtp
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: fake-smtp
     spec:
       containers:
-      - image: brokenpip3/fake-smtp:2
+      - image: quay.io/brokenpip3/fake-smtp:0.0.1
         name: fake-smtp
         ports:
         - containerPort: 10025
@@ -32,17 +29,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: null
   labels:
     app: fake-smtp
   name: fake-smtp
 spec:
   ports:
-  - name: "10025"
+  - name: "smtp"
     port: 10025
     protocol: TCP
     targetPort: 10025
   selector:
     app: fake-smtp
   type: ClusterIP
----
+...
